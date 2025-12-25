@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Pribadi</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .handwritten {
+        font-family: "Playfair Display", serif;
+      }
+
+      .profile-bg {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("./assets/bg1.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #3b82f6;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .hand-drawn-border {
+        border: 2px solid #4b5563;
+        border-radius: 15px 5px 15px 5px;
+        position: relative;
+      }
+
+      .hand-drawn-border::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 1px solid rgba(75, 85, 99, 0.2);
+        border-radius: 20px 10px 20px 10px;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+      <div
+        class="container mx-auto flex flex-col md:flex-row justify-between items-center"
+      >
+        <div class="flex items-center mb-4 md:mb-0">
+          <h1 class="text-2xl font-bold text-blue-700 handwritten">
+            Portofolio<span class="text-orange-500">.</span>
+          </h1>
+        </div>
+
+        <div class="flex space-x-6">
+          <a
+            href="#home"
+            class="nav-link font-medium text-gray-700 hover:text-blue-600"
+            >Beranda</a
+          >
+          <a
+            href="#about"
+            class="nav-link font-medium text-gray-700 hover:text-blue-600"
+            >Tentang</a
+          >
+          <a
+            href="#skills"
+            class="nav-link font-medium text-gray-700 hover:text-blue-600"
+            >Keahlian</a
+          >
+          <a
+            href="#experience"
+            class="nav-link font-medium text-gray-700 hover:text-blue-600"
+            >Pengalaman</a
+          >
+          <a
+            href="#contact"
+            class="nav-link font-medium text-gray-700 hover:text-blue-600"
+            >Kontak</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="profile-bg text-white py-24 md:py-32">
+      <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="inline-block mb-8">
+            <img
+              src="./assets/pp1.jpg"
+              alt="Foto Profil"
+              class="w-48 h-48 rounded-full border-4 border-white shadow-2xl mx-auto object-cover"
+            />
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-4 handwritten">
+            Mleyott
+          </h2>
+          <p class="text-xl md:text-2xl mb-6 text-blue-200">
+            Community Organizer
+          </p>
+          <p class="text-lg max-w-2xl mx-auto text-gray-200">
+            Aktif sebagai pemberi saran dan materi di komunitas yang saya
+            kelola. Berpengalaman di bidang pemrograman, serta terbiasa berbagi
+            pengetahuan dan membantu orang lain memahami solusi. Dalam konteks
+            komunitas, saya berperan sebagai konsultan, diskusi dan teknis.
+          </p>
+          <div class="mt-8">
+            <a
+              href="#contact"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg mr-4 inline-block card-hover"
+              >Hubungi Saya</a
+            >
+            <a
+              href="#about"
+              class="bg-transparent border border-white hover:bg-white hover:text-gray-800 text-white font-medium py-3 px-6 rounded-lg inline-block card-hover"
+              >Pelajari Lebih</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-pattern">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <h2
+            class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+          >
+            Tentang Saya
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="hand-drawn-border p-8 bg-white shadow-lg">
+              <h3 class="text-2xl font-bold mb-4 text-blue-700 handwritten">
+                Cerita Singkat
+              </h3>
+              <p class="mb-4 text-gray-700">
+                Saya mulai membangun komunitas pertama saya, SRC (Stress Relief
+                Community), pada tahun 2024. Komunitas ini berfokus pada isu
+                kesehatan mental, menjadi ruang bagi banyak orang untuk berbagi
+                cerita dan pengalaman. Di dalamnya, saya berperan sebagai
+                konsultan yang memberikan saran secara logis dan rasional.
+              </p>
+              <p class="mb-4 text-gray-700">
+                Setelah SRC berjalan sekitar satu tahun, saya membentuk
+                komunitas kedua bernama Forum Orang Hebat. Komunitas ini saya
+                buat sebagai ruang diskusi terbuka untuk membahas berbagai
+                pengetahuan dan sudut pandang. Tujuannya sederhana: menambah
+                wawasan, memperluas cara berpikir, dan membuka pandangan melalui
+                perbedaan pendapat.
+              </p>
+              <p class="mb-4 text-gray-700">
+                Di waktu senggang, saya juga aktif menekuni dunia pemrograman.
+                Saya senang membuat website dan bot WhatsApp, dan mulai terjun
+                ke bidang ini sejak duduk di kelas 8 SMP. Bagi saya, berbagi
+                pengetahuan—baik melalui komunitas maupun teknologi—adalah
+                bagian dari proses belajar yang berkelanjutan.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                Informasi Pribadi
+              </h3>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <i class="fas fa-user text-blue-600 mt-1 mr-3"></i>
+                  <div>
+                    <span class="font-medium">Nama Lengkap:</span>
+                    <div class="flex gap-3">
+                      <p>Mleyott</p>
+                      <p class="italic text-sm">anonim</p>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-3"></i>
+                  <div>
+                    <span class="font-medium">Lokasi:</span>
+                    <p>Jawa Timur, Indonesia</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-envelope text-blue-600 mt-1 mr-3"></i>
+                  <div>
+                    <span class="font-medium">Email:</span>
+                    <p>hidden information</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-briefcase text-blue-600 mt-1 mr-3"></i>
+                  <div>
+                    <span class="font-medium">Pekerjaan:</span>
+                    <p>Web Developer and konsultan</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-graduation-cap text-blue-600 mt-1 mr-3"></i>
+                  <div>
+                    <span class="font-medium">Pendidikan:</span>
+                    <p>hidden information</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+        >
+          Keahlian
+        </h2>
+
+        <div class="max-w-5xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Technical Skills -->
+            <div class="card-hover p-8 bg-gray-50 rounded-xl shadow-md">
+              <h3 class="text-2xl font-bold mb-6 text-blue-700 handwritten">
+                Teknis
+              </h3>
+
+              <div class="space-y-6">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium">HTML/CSS</span>
+                    <span class="font-medium">30%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      class="bg-blue-600 h-2.5 rounded-full"
+                      style="width: 30%"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium">JavaScript</span>
+                    <span class="font-medium">36%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      class="bg-blue-600 h-2.5 rounded-full"
+                      style="width: 36%"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium">Next.js</span>
+                    <span class="font-medium">24%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      class="bg-blue-600 h-2.5 rounded-full"
+                      style="width: 24%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="card-hover p-8 bg-gray-50 rounded-xl shadow-md">
+              <h3 class="text-2xl font-bold mb-6 text-blue-700 handwritten">
+                Profesional
+              </h3>
+
+              <div class="space-y-6">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium">Komunikasi</span>
+                    <span class="font-medium">78%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      class="bg-green-600 h-2.5 rounded-full"
+                      style="width: 78%"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium">Manajemen Waktu</span>
+                    <span class="font-medium">45%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      class="bg-green-600 h-2.5 rounded-full"
+                      style="width: 45%"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium">Problem Solving</span>
+                    <span class="font-medium">80%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      class="bg-green-600 h-2.5 rounded-full"
+                      style="width: 80%"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium">Kerja Tim</span>
+                    <span class="font-medium">29%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      class="bg-green-600 h-2.5 rounded-full"
+                      style="width: 29%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+        >
+          Komunitas
+        </h2>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-8">
+            <!-- Experience 1 -->
+            <div
+              class="card-hover bg-white p-6 rounded-xl shadow-md relative justify-center text-center"
+            >
+              <a
+                href="https://chat.whatsapp.com/HkckiO18yrHHjLA28gMXKb"
+                class="absolute top-4 right-4 text-blue-600 font-medium"
+              >
+                Bergabung
+              </a>
+
+              <div class="flex flex-col items-center mb-4">
+                <img src="./assets/src.jpg" class="w-32 h-32 mb-3" alt="SRC" />
+
+                <h3 class="text-xl font-bold text-gray-800">
+                  Stress Relif Community
+                </h3>
+              </div>
+
+              <p class="text-gray-700">
+                Komunitas terbuka yang berfokus pada kesehatan mental. Tempat
+                bagi siapa saja untuk berbagi cerita, menyampaikan keresahan,
+                dan merasa didengar. Diskusi berjalan dengan pendekatan rasional
+                dan saling menghargai, dengan tujuan membantu anggota melihat
+                masalah dari sudut pandang yang lebih jernih dan logis.
+              </p>
+            </div>
+
+            <!-- Experience 2 -->
+            <div
+              class="card-hover bg-white p-6 rounded-xl shadow-md relative justify-center text-center"
+            >
+              <a
+                href="https://chat.whatsapp.com/CNAktZBss8aLjBw3k8R6Jp"
+                class="absolute top-4 right-4 text-blue-600 font-medium"
+              >
+                Bergabung
+              </a>
+
+              <div class="flex flex-col items-center mb-4">
+                <img
+                  src="./assets/diskus.png"
+                  class="w-32 h-32 mb-3"
+                  alt="SRC"
+                />
+
+                <h3 class="text-xl font-bold text-gray-800">
+                  Forum Orang Hebat
+                </h3>
+              </div>
+
+              <p class="text-gray-700">
+                Ruang diskusi umum yang terbuka untuk siapa saja. Komunitas ini
+                membahas berbagai topik dan pengetahuan dari beragam sudut
+                pandang. Tujuannya untuk menambah wawasan, memperluas cara
+                berpikir, serta membuka ruang dialog yang bebas, setara, dan
+                saling menghormati.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+        >
+          Hubungi Saya
+        </h2>
+
+        <div class="max-w-5xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Contact Info -->
+            <div>
+              <h3 class="text-2xl font-bold mb-6 text-blue-700 handwritten">
+                Mari Berkolaborasi
+              </h3>
+              <p class="text-gray-700 mb-8">
+                Saya terbuka untuk peluang kerja sama, proyek freelance, atau
+                sekadar berdiskusi tentang teknologi dan pengembangan web.
+                Jangan ragu untuk menghubungi saya!
+              </p>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div class="bg-blue-100 p-3 rounded-full mr-4">
+                    <i class="fas fa-envelope text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Email</h4>
+                    <p class="text-gray-700">hidden information</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-blue-100 p-3 rounded-full mr-4">
+                    <i class="fas fa-phone text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Telepon</h4>
+                    <p class="text-gray-700">+62 816-1564-8573</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-blue-100 p-3 rounded-full mr-4">
+                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-gray-800">Lokasi</h4>
+                    <p class="text-gray-700">Jawa Timur, Indonesia</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-10">
+                <h4 class="font-bold text-gray-800 mb-4">Media Sosial</h4>
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
+                  >
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="bg-gray-100 hover:bg-blue-400 hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
+                  >
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="bg-gray-100 hover:bg-pink-600 hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
+                  >
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="bg-gray-100 hover:bg-gray-800 hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="card-hover bg-gray-50 p-8 rounded-xl shadow-md">
+              <form id="contactForm">
+                <div class="mb-6">
+                  <label for="name" class="block text-gray-700 font-medium mb-2"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Masukkan nama Anda"
+                    required
+                  />
+                </div>
+
+                <div class="mb-6">
+                  <label
+                    for="message"
+                    class="block text-gray-700 font-medium mb-2"
+                    >Pesan</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="5"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Tulis pesan Anda di sini..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300"
+                >
+                  Kirim Pesan
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <h2 class="text-2xl font-bold handwritten">Mleyott</h2>
+            <p class="text-gray-400 mt-2">
+              Web Developer & Community Organizer
+            </p>
+          </div>
+
+          <div class="text-center">
+            <p class="text-gray-400">
+              &copy; 2026 Mleyott. Semua hak dilindungi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling untuk navigasi
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Form submission handler
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const message = document.getElementById("message").value;
+
+          const phoneNumber = "6281615648573"; // ganti dengan nomor WA tujuan (pakai kode negara, tanpa +)
+
+          const text = `Halo, nama saya ${name}.\n\n${message}`;
+
+          const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+            text
+          )}`;
+
+          window.open(whatsappURL, "_blank");
+        });
+      // Efek scroll untuk navbar
+      window.addEventListener("scroll", function () {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 100) {
+          nav.classList.add("bg-white", "shadow-lg");
+        } else {
+          nav.classList.remove("bg-white", "shadow-lg");
+        }
+      });
+    </script>
+  </body>
+</html>
