@@ -1,0 +1,2 @@
+# profil
+isi sendiri
