@@ -16,7 +16,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
     <style>
       body {
         font-family: "Inter", sans-serif;
@@ -32,7 +31,13 @@
           url("./assets/bg1.jpg");
         background-size: cover;
         background-position: center;
-        background-attachment: fixed;
+        background-attachment: scroll; /* Changed from fixed for better mobile */
+      }
+
+      @media (min-width: 768px) {
+        .profile-bg {
+          background-attachment: fixed; /* Fixed only on desktop */
+        }
       }
 
       .nav-link {
@@ -54,6 +59,19 @@
         width: 100%;
       }
 
+      /* Mobile menu styles */
+      @media (max-width: 768px) {
+        .mobile-menu {
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .mobile-menu a {
+          padding: 0.5rem 0;
+        }
+      }
+
       .hand-drawn-border {
         border: 2px solid #4b5563;
         border-radius: 15px 5px 15px 5px;
@@ -71,112 +89,206 @@
         border-radius: 20px 10px 20px 10px;
         z-index: -1;
       }
+
+      /* Custom responsive fixes */
+      .community-card {
+        padding: 1.5rem;
+      }
+
+      @media (max-width: 640px) {
+        .community-card {
+          padding: 1rem;
+        }
+
+        .community-card img {
+          width: 6rem !important;
+          height: 6rem !important;
+        }
+      }
+
+      /* Contact form responsive */
+      .contact-form {
+        padding: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .contact-form {
+          padding: 1rem;
+        }
+      }
+
+      /* Fix overflow on mobile */
+      .text-ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .lds-ring,
+      .lds-ring div {
+        box-sizing: border-box;
+      }
+      .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+      }
+      .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid currentColor;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: currentColor transparent transparent transparent;
+      }
+      .lds-ring div:nth-child(1) {
+        animation-delay: -0.45s;
+      }
+      .lds-ring div:nth-child(2) {
+        animation-delay: -0.3s;
+      }
+      .lds-ring div:nth-child(3) {
+        animation-delay: -0.15s;
+      }
+      @keyframes lds-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-800">
     <!-- Navbar -->
-    <nav class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+    <nav class="bg-white shadow-md py-4 px-4 sm:px-6 sticky top-0 z-50">
       <div
-        class="container mx-auto flex flex-col md:flex-row justify-between items-center"
+        class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center"
       >
-        <div class="flex items-center mb-4 md:mb-0">
-          <h1 class="text-2xl font-bold text-blue-700 handwritten">
+        <div class="flex items-center">
+          <h1 class="text-xl sm:text-2xl font-bold text-blue-700 handwritten">
             Portofolio<span class="text-orange-500">.</span>
           </h1>
         </div>
 
-        <div class="flex space-x-6">
+        <div
+          class="hidden sm:flex flex-wrap justify-center gap-3 sm:gap-6 mobile-menu"
+        >
           <a
             href="#home"
             class="nav-link font-medium text-gray-700 hover:text-blue-600"
-            >Beranda</a
           >
+            Beranda
+          </a>
           <a
             href="#about"
             class="nav-link font-medium text-gray-700 hover:text-blue-600"
-            >Tentang</a
           >
+            Tentang
+          </a>
           <a
             href="#skills"
             class="nav-link font-medium text-gray-700 hover:text-blue-600"
-            >Keahlian</a
           >
+            Keahlian
+          </a>
           <a
             href="#experience"
             class="nav-link font-medium text-gray-700 hover:text-blue-600"
-            >Pengalaman</a
           >
+            Komunitas
+          </a>
           <a
             href="#contact"
             class="nav-link font-medium text-gray-700 hover:text-blue-600"
-            >Kontak</a
           >
+            Kontak
+          </a>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="profile-bg text-white py-24 md:py-32">
-      <div class="container mx-auto px-6">
+    <section id="home" class="profile-bg text-white py-16 md:py-24 lg:py-32">
+      <div class="container mx-auto px-4 sm:px-6">
         <div class="max-w-3xl mx-auto text-center">
-          <div class="inline-block mb-8">
+          <div class="inline-block mb-6 md:mb-8">
             <img
               src="./assets/pp1.jpg"
               alt="Foto Profil"
-              class="w-48 h-48 rounded-full border-4 border-white shadow-2xl mx-auto object-cover"
+              class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full border-4 border-white shadow-2xl mx-auto object-cover"
             />
           </div>
-          <h2 class="text-4xl md:text-5xl font-bold mb-4 handwritten">
+          <h2
+            class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 handwritten"
+          >
             Mleyott
           </h2>
-          <p class="text-xl md:text-2xl mb-6 text-blue-200">
+          <p
+            id="typing-text"
+            class="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-6 text-blue-200"
+          >
             Community Organizer
           </p>
-          <p class="text-lg max-w-2xl mx-auto text-gray-200">
+          <p class="text-base sm:text-lg max-w-2xl mx-auto text-gray-200 px-2">
             Aktif sebagai pemberi saran dan materi di komunitas yang saya
             kelola. Berpengalaman di bidang pemrograman, serta terbiasa berbagi
             pengetahuan dan membantu orang lain memahami solusi. Dalam konteks
             komunitas, saya berperan sebagai konsultan, diskusi dan teknis.
           </p>
-          <div class="mt-8">
+          <div
+            class="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
+          >
             <a
               href="#contact"
-              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg mr-4 inline-block card-hover"
-              >Hubungi Saya</a
+              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg inline-block card-hover text-center"
             >
+              Hubungi Saya
+            </a>
             <a
               href="#about"
-              class="bg-transparent border border-white hover:bg-white hover:text-gray-800 text-white font-medium py-3 px-6 rounded-lg inline-block card-hover"
-              >Pelajari Lebih</a
+              class="bg-transparent border border-white hover:bg-white hover:text-gray-800 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg inline-block card-hover text-center"
             >
+              Pelajari Lebih
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-pattern">
-      <div class="container mx-auto px-6">
+    <section id="about" class="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <div class="container mx-auto px-4 sm:px-6">
         <div class="max-w-5xl mx-auto">
           <h2
-            class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+            class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-gray-800"
           >
             Tentang Saya
           </h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="hand-drawn-border p-8 bg-white shadow-lg">
-              <h3 class="text-2xl font-bold mb-4 text-blue-700 handwritten">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+          >
+            <div class="hand-drawn-border p-6 sm:p-8 bg-white shadow-lg">
+              <h3
+                class="text-xl sm:text-2xl font-bold mb-4 text-blue-700 handwritten"
+              >
                 Cerita Singkat
               </h3>
-              <p class="mb-4 text-gray-700">
+              <p class="mb-4 text-gray-700 text-sm sm:text-base">
                 Saya mulai membangun komunitas pertama saya, SRC (Stress Relief
                 Community), pada tahun 2024. Komunitas ini berfokus pada isu
                 kesehatan mental, menjadi ruang bagi banyak orang untuk berbagi
                 cerita dan pengalaman. Di dalamnya, saya berperan sebagai
                 konsultan yang memberikan saran secara logis dan rasional.
               </p>
-              <p class="mb-4 text-gray-700">
+              <p class="mb-4 text-gray-700 text-sm sm:text-base">
                 Setelah SRC berjalan sekitar satu tahun, saya membentuk
                 komunitas kedua bernama Forum Orang Hebat. Komunitas ini saya
                 buat sebagai ruang diskusi terbuka untuk membahas berbagai
@@ -184,7 +296,7 @@
                 wawasan, memperluas cara berpikir, dan membuka pandangan melalui
                 perbedaan pendapat.
               </p>
-              <p class="mb-4 text-gray-700">
+              <p class="mb-4 text-gray-700 text-sm sm:text-base">
                 Di waktu senggang, saya juga aktif menekuni dunia pemrograman.
                 Saya senang membuat website dan bot WhatsApp, dan mulai terjun
                 ke bidang ini sejak duduk di kelas 8 SMP. Bagi saya, berbagi
@@ -194,46 +306,70 @@
             </div>
 
             <div>
-              <h3 class="text-2xl font-bold mb-6 text-gray-800">
+              <h3 class="text-xl sm:text-2xl font-bold mb-6 text-gray-800">
                 Informasi Pribadi
               </h3>
-              <ul class="space-y-4">
+              <ul class="space-y-3 sm:space-y-4">
                 <li class="flex items-start">
-                  <i class="fas fa-user text-blue-600 mt-1 mr-3"></i>
-                  <div>
-                    <span class="font-medium">Nama Lengkap:</span>
-                    <div class="flex gap-3">
-                      <p>Mleyott</p>
-                      <p class="italic text-sm">anonim</p>
+                  <i
+                    class="fas fa-user text-blue-600 mt-1 mr-3 text-sm sm:text-base"
+                  ></i>
+                  <div class="flex-1">
+                    <span class="font-medium text-sm sm:text-base"
+                      >Nama Lengkap:</span
+                    >
+                    <div class="flex flex-col sm:flex-row sm:gap-3 mt-1">
+                      <p class="text-sm sm:text-base">Mleyott</p>
+                      <p class="italic text-xs sm:text-sm text-gray-600">
+                        anonim
+                      </p>
                     </div>
                   </div>
                 </li>
                 <li class="flex items-start">
-                  <i class="fas fa-map-marker-alt text-blue-600 mt-1 mr-3"></i>
+                  <i
+                    class="fas fa-map-marker-alt text-blue-600 mt-1 mr-3 text-sm sm:text-base"
+                  ></i>
                   <div>
-                    <span class="font-medium">Lokasi:</span>
-                    <p>Jawa Timur, Indonesia</p>
+                    <span class="font-medium text-sm sm:text-base"
+                      >Lokasi:</span
+                    >
+                    <p class="text-sm sm:text-base mt-1">
+                      Jawa Timur, Indonesia
+                    </p>
                   </div>
                 </li>
                 <li class="flex items-start">
-                  <i class="fas fa-envelope text-blue-600 mt-1 mr-3"></i>
+                  <i
+                    class="fas fa-envelope text-blue-600 mt-1 mr-3 text-sm sm:text-base"
+                  ></i>
                   <div>
-                    <span class="font-medium">Email:</span>
-                    <p>hidden information</p>
+                    <span class="font-medium text-sm sm:text-base">Email:</span>
+                    <p class="text-sm sm:text-base mt-1">hidden information</p>
                   </div>
                 </li>
                 <li class="flex items-start">
-                  <i class="fas fa-briefcase text-blue-600 mt-1 mr-3"></i>
+                  <i
+                    class="fas fa-briefcase text-blue-600 mt-1 mr-3 text-sm sm:text-base"
+                  ></i>
                   <div>
-                    <span class="font-medium">Pekerjaan:</span>
-                    <p>Web Developer and konsultan</p>
+                    <span class="font-medium text-sm sm:text-base"
+                      >Pekerjaan:</span
+                    >
+                    <p class="text-sm sm:text-base mt-1">
+                      Web Developer and konsultan
+                    </p>
                   </div>
                 </li>
                 <li class="flex items-start">
-                  <i class="fas fa-graduation-cap text-blue-600 mt-1 mr-3"></i>
+                  <i
+                    class="fas fa-graduation-cap text-blue-600 mt-1 mr-3 text-sm sm:text-base"
+                  ></i>
                   <div>
-                    <span class="font-medium">Pendidikan:</span>
-                    <p>hidden information</p>
+                    <span class="font-medium text-sm sm:text-base"
+                      >Pendidikan:</span
+                    >
+                    <p class="text-sm sm:text-base mt-1">hidden information</p>
                   </div>
                 </li>
               </ul>
@@ -244,31 +380,35 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-white">
-      <div class="container mx-auto px-6">
+    <section id="skills" class="py-12 sm:py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4 sm:px-6">
         <h2
-          class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+          class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-gray-800"
         >
           Keahlian
         </h2>
 
         <div class="max-w-5xl mx-auto">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <!-- Technical Skills -->
-            <div class="card-hover p-8 bg-gray-50 rounded-xl shadow-md">
-              <h3 class="text-2xl font-bold mb-6 text-blue-700 handwritten">
+            <div class="card-hover p-6 sm:p-8 bg-gray-50 rounded-xl shadow-md">
+              <h3
+                class="text-xl sm:text-2xl font-bold mb-6 text-blue-700 handwritten"
+              >
                 Teknis
               </h3>
 
-              <div class="space-y-6">
+              <div class="space-y-4 sm:space-y-6">
                 <div>
                   <div class="flex justify-between mb-1">
-                    <span class="font-medium">HTML/CSS</span>
-                    <span class="font-medium">30%</span>
+                    <span class="font-medium text-sm sm:text-base"
+                      >HTML/CSS</span
+                    >
+                    <span class="font-medium text-sm sm:text-base">30%</span>
                   </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="w-full bg-gray-200 rounded-full h-2 sm:h-2.5">
                     <div
-                      class="bg-blue-600 h-2.5 rounded-full"
+                      class="bg-blue-600 h-2 sm:h-2.5 rounded-full"
                       style="width: 30%"
                     ></div>
                   </div>
@@ -276,12 +416,14 @@
 
                 <div>
                   <div class="flex justify-between mb-1">
-                    <span class="font-medium">JavaScript</span>
-                    <span class="font-medium">36%</span>
+                    <span class="font-medium text-sm sm:text-base"
+                      >JavaScript</span
+                    >
+                    <span class="font-medium text-sm sm:text-base">36%</span>
                   </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="w-full bg-gray-200 rounded-full h-2 sm:h-2.5">
                     <div
-                      class="bg-blue-600 h-2.5 rounded-full"
+                      class="bg-blue-600 h-2 sm:h-2.5 rounded-full"
                       style="width: 36%"
                     ></div>
                   </div>
@@ -289,12 +431,14 @@
 
                 <div>
                   <div class="flex justify-between mb-1">
-                    <span class="font-medium">Next.js</span>
-                    <span class="font-medium">24%</span>
+                    <span class="font-medium text-sm sm:text-base"
+                      >Next.js</span
+                    >
+                    <span class="font-medium text-sm sm:text-base">24%</span>
                   </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="w-full bg-gray-200 rounded-full h-2 sm:h-2.5">
                     <div
-                      class="bg-blue-600 h-2.5 rounded-full"
+                      class="bg-blue-600 h-2 sm:h-2.5 rounded-full"
                       style="width: 24%"
                     ></div>
                   </div>
@@ -303,20 +447,24 @@
             </div>
 
             <!-- Soft Skills -->
-            <div class="card-hover p-8 bg-gray-50 rounded-xl shadow-md">
-              <h3 class="text-2xl font-bold mb-6 text-blue-700 handwritten">
+            <div class="card-hover p-6 sm:p-8 bg-gray-50 rounded-xl shadow-md">
+              <h3
+                class="text-xl sm:text-2xl font-bold mb-6 text-blue-700 handwritten"
+              >
                 Profesional
               </h3>
 
-              <div class="space-y-6">
+              <div class="space-y-4 sm:space-y-6">
                 <div>
                   <div class="flex justify-between mb-1">
-                    <span class="font-medium">Komunikasi</span>
-                    <span class="font-medium">78%</span>
+                    <span class="font-medium text-sm sm:text-base"
+                      >Komunikasi</span
+                    >
+                    <span class="font-medium text-sm sm:text-base">78%</span>
                   </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="w-full bg-gray-200 rounded-full h-2 sm:h-2.5">
                     <div
-                      class="bg-green-600 h-2.5 rounded-full"
+                      class="bg-green-600 h-2 sm:h-2.5 rounded-full"
                       style="width: 78%"
                     ></div>
                   </div>
@@ -324,12 +472,14 @@
 
                 <div>
                   <div class="flex justify-between mb-1">
-                    <span class="font-medium">Manajemen Waktu</span>
-                    <span class="font-medium">45%</span>
+                    <span class="font-medium text-sm sm:text-base"
+                      >Manajemen Waktu</span
+                    >
+                    <span class="font-medium text-sm sm:text-base">45%</span>
                   </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="w-full bg-gray-200 rounded-full h-2 sm:h-2.5">
                     <div
-                      class="bg-green-600 h-2.5 rounded-full"
+                      class="bg-green-600 h-2 sm:h-2.5 rounded-full"
                       style="width: 45%"
                     ></div>
                   </div>
@@ -337,12 +487,14 @@
 
                 <div>
                   <div class="flex justify-between mb-1">
-                    <span class="font-medium">Problem Solving</span>
-                    <span class="font-medium">80%</span>
+                    <span class="font-medium text-sm sm:text-base"
+                      >Problem Solving</span
+                    >
+                    <span class="font-medium text-sm sm:text-base">80%</span>
                   </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="w-full bg-gray-200 rounded-full h-2 sm:h-2.5">
                     <div
-                      class="bg-green-600 h-2.5 rounded-full"
+                      class="bg-green-600 h-2 sm:h-2.5 rounded-full"
                       style="width: 80%"
                     ></div>
                   </div>
@@ -350,12 +502,14 @@
 
                 <div>
                   <div class="flex justify-between mb-1">
-                    <span class="font-medium">Kerja Tim</span>
-                    <span class="font-medium">29%</span>
+                    <span class="font-medium text-sm sm:text-base"
+                      >Kerja Tim</span
+                    >
+                    <span class="font-medium text-sm sm:text-base">29%</span>
                   </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="w-full bg-gray-200 rounded-full h-2 sm:h-2.5">
                     <div
-                      class="bg-green-600 h-2.5 rounded-full"
+                      class="bg-green-600 h-2 sm:h-2.5 rounded-full"
                       style="width: 29%"
                     ></div>
                   </div>
@@ -368,36 +522,48 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 bg-gray-50">
-      <div class="container mx-auto px-6">
+    <section id="experience" class="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <div class="container mx-auto px-4 sm:px-6">
         <h2
-          class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+          class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-gray-800"
         >
           Komunitas
         </h2>
 
         <div class="max-w-4xl mx-auto">
-          <div class="space-y-8">
-            <!-- Experience 1 -->
+          <div class="space-y-6 sm:space-y-8">
+            <!-- Komunitas 1 -->
             <div
-              class="card-hover bg-white p-6 rounded-xl shadow-md relative justify-center text-center"
+              class="card-hover bg-white p-5 sm:p-6 rounded-xl shadow-md relative"
             >
               <a
                 href="https://chat.whatsapp.com/HkckiO18yrHHjLA28gMXKb"
-                class="absolute top-4 right-4 text-blue-600 font-medium"
+                class="absolute top-3 right-3 sm:top-4 sm:right-4 text-blue-600 font-medium text-sm sm:text-base hover:text-blue-800 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Bergabung
               </a>
 
-              <div class="flex flex-col items-center mb-4">
-                <img src="./assets/src.jpg" class="w-32 h-32 mb-3" alt="SRC" />
-
-                <h3 class="text-xl font-bold text-gray-800">
-                  Stress Relif Community
-                </h3>
+              <div
+                class="flex flex-col sm:flex-row items-center mb-4 sm:mb-6 gap-4 sm:gap-6"
+              >
+                <img
+                  src="./assets/src.jpg"
+                  class="w-24 h-24 sm:w-32 sm:h-32 rounded-lg object-cover"
+                  alt="SRC"
+                />
+                <div class="text-center sm:text-left">
+                  <h3 class="text-lg sm:text-xl font-bold text-gray-800">
+                    Stress Relief Community
+                  </h3>
+                  <p class="text-gray-600 text-sm sm:text-base mt-1">
+                    Komunitas Kesehatan Mental
+                  </p>
+                </div>
               </div>
 
-              <p class="text-gray-700">
+              <p class="text-gray-700 text-sm sm:text-base">
                 Komunitas terbuka yang berfokus pada kesehatan mental. Tempat
                 bagi siapa saja untuk berbagi cerita, menyampaikan keresahan,
                 dan merasa didengar. Diskusi berjalan dengan pendekatan rasional
@@ -406,30 +572,38 @@
               </p>
             </div>
 
-            <!-- Experience 2 -->
+            <!-- Komunitas 2 -->
             <div
-              class="card-hover bg-white p-6 rounded-xl shadow-md relative justify-center text-center"
+              class="card-hover bg-white p-5 sm:p-6 rounded-xl shadow-md relative"
             >
               <a
                 href="https://chat.whatsapp.com/CNAktZBss8aLjBw3k8R6Jp"
-                class="absolute top-4 right-4 text-blue-600 font-medium"
+                class="absolute top-3 right-3 sm:top-4 sm:right-4 text-blue-600 font-medium text-sm sm:text-base hover:text-blue-800 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Bergabung
               </a>
 
-              <div class="flex flex-col items-center mb-4">
+              <div
+                class="flex flex-col sm:flex-row items-center mb-4 sm:mb-6 gap-4 sm:gap-6"
+              >
                 <img
                   src="./assets/diskus.png"
-                  class="w-32 h-32 mb-3"
-                  alt="SRC"
+                  class="w-24 h-24 sm:w-32 sm:h-32 rounded-lg object-cover"
+                  alt="Forum Orang Hebat"
                 />
-
-                <h3 class="text-xl font-bold text-gray-800">
-                  Forum Orang Hebat
-                </h3>
+                <div class="text-center sm:text-left">
+                  <h3 class="text-lg sm:text-xl font-bold text-gray-800">
+                    Forum Orang Hebat
+                  </h3>
+                  <p class="text-gray-600 text-sm sm:text-base mt-1">
+                    Komunitas Diskusi Terbuka
+                  </p>
+                </div>
               </div>
 
-              <p class="text-gray-700">
+              <p class="text-gray-700 text-sm sm:text-base">
                 Ruang diskusi umum yang terbuka untuk siapa saja. Komunitas ini
                 membahas berbagai topik dan pengetahuan dari beragam sudut
                 pandang. Tujuannya untuk menambah wawasan, memperluas cara
@@ -441,118 +615,174 @@
         </div>
       </div>
     </section>
+    <!-- project  -->
+    <section id="experience" class="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-gray-800"
+        >
+          Projek
+        </h2>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="space-y-6 sm:space-y-8 text-center">
+            <div class="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <p id="update">wait for update...</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-      <div class="container mx-auto px-6">
+    <section id="contact" class="py-12 sm:py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-4 sm:px-6">
         <h2
-          class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800"
+          class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-gray-800"
         >
           Hubungi Saya
         </h2>
 
         <div class="max-w-5xl mx-auto">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             <!-- Contact Info -->
             <div>
-              <h3 class="text-2xl font-bold mb-6 text-blue-700 handwritten">
+              <h3
+                class="text-xl sm:text-2xl font-bold mb-6 text-blue-700 handwritten"
+              >
                 Mari Berkolaborasi
               </h3>
-              <p class="text-gray-700 mb-8">
+              <p class="text-gray-700 mb-6 sm:mb-8 text-sm sm:text-base">
                 Saya terbuka untuk peluang kerja sama, proyek freelance, atau
                 sekadar berdiskusi tentang teknologi dan pengembangan web.
                 Jangan ragu untuk menghubungi saya!
               </p>
 
-              <div class="space-y-6">
+              <div class="space-y-4 sm:space-y-6">
                 <div class="flex items-start">
-                  <div class="bg-blue-100 p-3 rounded-full mr-4">
-                    <i class="fas fa-envelope text-blue-600"></i>
+                  <div
+                    class="bg-blue-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4 flex-shrink-0"
+                  >
+                    <i
+                      class="fas fa-envelope text-blue-600 text-sm sm:text-base"
+                    ></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-gray-800">Email</h4>
-                    <p class="text-gray-700">hidden information</p>
+                    <h4 class="font-bold text-gray-800 text-sm sm:text-base">
+                      Email
+                    </h4>
+                    <p class="text-gray-700 text-sm sm:text-base mt-1">
+                      hidden information
+                    </p>
                   </div>
                 </div>
 
                 <div class="flex items-start">
-                  <div class="bg-blue-100 p-3 rounded-full mr-4">
-                    <i class="fas fa-phone text-blue-600"></i>
+                  <div
+                    class="bg-blue-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4 flex-shrink-0"
+                  >
+                    <i
+                      class="fas fa-phone text-blue-600 text-sm sm:text-base"
+                    ></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-gray-800">Telepon</h4>
-                    <p class="text-gray-700">+62 816-1564-8573</p>
+                    <h4 class="font-bold text-gray-800 text-sm sm:text-base">
+                      Telepon
+                    </h4>
+                    <p class="text-gray-700 text-sm sm:text-base mt-1">
+                      +62 816-1564-8573
+                    </p>
                   </div>
                 </div>
 
                 <div class="flex items-start">
-                  <div class="bg-blue-100 p-3 rounded-full mr-4">
-                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                  <div
+                    class="bg-blue-100 p-2 sm:p-3 rounded-full mr-3 sm:mr-4 flex-shrink-0"
+                  >
+                    <i
+                      class="fas fa-map-marker-alt text-blue-600 text-sm sm:text-base"
+                    ></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-gray-800">Lokasi</h4>
-                    <p class="text-gray-700">Jawa Timur, Indonesia</p>
+                    <h4 class="font-bold text-gray-800 text-sm sm:text-base">
+                      Lokasi
+                    </h4>
+                    <p class="text-gray-700 text-sm sm:text-base mt-1">
+                      Jawa Timur, Indonesia
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div class="mt-10">
-                <h4 class="font-bold text-gray-800 mb-4">Media Sosial</h4>
-                <div class="flex space-x-4">
+              <div class="mt-8 sm:mt-10">
+                <h4 class="font-bold text-gray-800 mb-4 text-sm sm:text-base">
+                  Media Sosial
+                </h4>
+                <div class="flex space-x-3 sm:space-x-4">
                   <a
                     href="#"
-                    class="bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
+                    class="bg-gray-100 hover:bg-blue-600 hover:text-white text-gray-700 p-2 sm:p-3 rounded-full transition-colors duration-300 flex-shrink-0"
                   >
-                    <i class="fab fa-linkedin-in"></i>
+                    <i class="fab fa-linkedin-in text-sm sm:text-base"></i>
                   </a>
                   <a
                     href="#"
-                    class="bg-gray-100 hover:bg-blue-400 hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
+                    class="bg-gray-100 hover:bg-blue-400 hover:text-white text-gray-700 p-2 sm:p-3 rounded-full transition-colors duration-300 flex-shrink-0"
                   >
-                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-twitter text-sm sm:text-base"></i>
                   </a>
                   <a
                     href="#"
-                    class="bg-gray-100 hover:bg-pink-600 hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
+                    class="bg-gray-100 hover:bg-pink-600 hover:text-white text-gray-700 p-2 sm:p-3 rounded-full transition-colors duration-300 flex-shrink-0"
                   >
-                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-instagram text-sm sm:text-base"></i>
                   </a>
                   <a
                     href="#"
-                    class="bg-gray-100 hover:bg-gray-800 hover:text-white text-gray-700 p-3 rounded-full transition-colors duration-300"
+                    class="bg-gray-100 hover:bg-gray-800 hover:text-white text-gray-700 p-2 sm:p-3 rounded-full transition-colors duration-300 flex-shrink-0"
                   >
-                    <i class="fab fa-github"></i>
+                    <i class="fab fa-github text-sm sm:text-base"></i>
                   </a>
                 </div>
               </div>
             </div>
 
             <!-- Contact Form -->
-            <div class="card-hover bg-gray-50 p-8 rounded-xl shadow-md">
+            <div
+              class="card-hover bg-gray-50 p-5 sm:p-6 md:p-8 rounded-xl shadow-md contact-form"
+            >
               <form id="contactForm">
-                <div class="mb-6">
-                  <label for="name" class="block text-gray-700 font-medium mb-2"
-                    >Nama Lengkap</label
+                <div class="mb-4 sm:mb-6">
+                  <label
+                    for="name"
+                    class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
                   >
+                    Nama Lengkap
+                  </label>
                   <input
                     type="text"
                     id="name"
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
                     placeholder="Masukkan nama Anda"
                     required
                   />
                 </div>
 
-                <div class="mb-6">
+                <div class="mb-4 sm:mb-6">
                   <label
                     for="message"
-                    class="block text-gray-700 font-medium mb-2"
-                    >Pesan</label
+                    class="block text-gray-700 font-medium mb-2 text-sm sm:text-base"
                   >
+                    Pesan
+                  </label>
                   <textarea
                     id="message"
-                    rows="5"
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    rows="4"
+                    class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
                     placeholder="Tulis pesan Anda di sini..."
                     required
                   ></textarea>
@@ -560,9 +790,9 @@
 
                 <button
                   type="submit"
-                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-300"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-300 text-sm sm:text-base"
                 >
-                  Kirim Pesan
+                  Kirim Pesan via WhatsApp
                 </button>
               </form>
             </div>
@@ -572,18 +802,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-10">
-      <div class="container mx-auto px-6">
+    <footer class="bg-gray-800 text-white py-8 sm:py-10">
+      <div class="container mx-auto px-4 sm:px-6">
         <div class="flex flex-col md:flex-row justify-between items-center">
-          <div class="mb-6 md:mb-0">
-            <h2 class="text-2xl font-bold handwritten">Mleyott</h2>
-            <p class="text-gray-400 mt-2">
+          <div class="mb-6 md:mb-0 text-center md:text-left">
+            <h2 class="text-xl sm:text-2xl font-bold handwritten">Mleyott</h2>
+            <p class="text-gray-400 mt-1 sm:mt-2 text-sm sm:text-base">
               Web Developer & Community Organizer
             </p>
           </div>
 
           <div class="text-center">
-            <p class="text-gray-400">
+            <p class="text-gray-400 text-sm sm:text-base">
               &copy; 2026 Mleyott. Semua hak dilindungi.
             </p>
           </div>
@@ -592,6 +822,37 @@
     </footer>
 
     <script>
+      const typingText = document.getElementById("typing-text");
+      const loadingText = document.getElementById("update");
+      const typingSpeed = 100;
+      const deletingSpeed = 70;
+      const delay = 2000;
+      let charIndex = 0;
+      let textIndex = 0;
+      let isDeleting = false;
+      let texts = ["Community Organizer", "Programmer", "Vlogger"];
+
+      const typeEffect = () => {
+        const currentText = texts[textIndex];
+        const currentLoading = textsLoading[textIndex];
+        if (!isDeleting) {
+          typingText.textContent = currentText.substring(0, charIndex + 1);
+
+          charIndex++;
+          if (charIndex === currentText.length) {
+            setTimeout(() => (isDeleting = true), delay);
+          }
+        } else {
+          typingText.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+          if (charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+          }
+        }
+        setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
+      };
+      typeEffect();
       // Smooth scrolling untuk navigasi
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
@@ -619,7 +880,7 @@
           const name = document.getElementById("name").value;
           const message = document.getElementById("message").value;
 
-          const phoneNumber = "6281615648573"; // ganti dengan nomor WA tujuan (pakai kode negara, tanpa +)
+          const phoneNumber = "6281615648573";
 
           const text = `Halo, nama saya ${name}.\n\n${message}`;
 
@@ -629,6 +890,7 @@
 
           window.open(whatsappURL, "_blank");
         });
+
       // Efek scroll untuk navbar
       window.addEventListener("scroll", function () {
         const nav = document.querySelector("nav");
